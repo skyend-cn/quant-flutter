@@ -21,19 +21,10 @@ class G {
 
   /// toolbar routeName
   static final List toobarRouteNameList = [
-    '/',
-    '/menu',
-    '/order',
-    '/shopping_cart',
-    '/mine'
+    '/market',
+    '/discover',
+    '/mine',
   ];
-
-  /// 处理商品描述
-  static String handleGoodsDesc(String str) {
-    return str
-        .replaceAll(RegExp(',\$'), '')
-        .replaceAll(RegExp('规格:|温度:|糖度:|奶油:|无'), '');
-  }
 
   /// 初始化request
   static final Request req = Request();
