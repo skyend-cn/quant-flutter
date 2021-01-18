@@ -28,15 +28,15 @@ class Router {
 
   Route getRoutes(RouteSettings settings) {
     String routeName = settings.name;
-    final Function buillder = Router._routes[routeName];
+    final Function builder = Router._routes[routeName];
     print(settings);
-    if (buillder == null) {
+    if (builder == null) {
       return null;
     } else {
       return MaterialPageRoute(
           settings: settings,
           builder: (BuildContext context) =>
-              buillder(context, args: settings.arguments));
+              builder(context, args: settings.arguments));
     }
   }
 }

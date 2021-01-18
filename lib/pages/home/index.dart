@@ -12,14 +12,14 @@ class Home extends StatefulWidget {
   static Mine _mine = Mine();
 
   final Map<int, Map> pages = {
-    0: _createPage(_market, appbar: _market.getAppBar(), rountName: '/market'),
+    0: _createPage(_market, appbar: _market.getAppBar(), routeName: '/market'),
     1: _createPage(_discover,
-        appbar: _discover.getAppBar(), rountName: '/discover'),
-    2: _createPage(_mine, appbar: _mine.getAppBar(), rountName: '/mine'),
+        appbar: _discover.getAppBar(), routeName: '/discover'),
+    2: _createPage(_mine, appbar: _mine.getAppBar(), routeName: '/mine'),
   };
 
-  static Map _createPage(Widget page, {AppBar appbar, String rountName}) {
-    return {"widget": page, "appbar": appbar, "routeName": rountName};
+  static Map _createPage(Widget page, {AppBar appbar, String routeName}) {
+    return {"widget": page, "appbar": appbar, "routeName": routeName};
   }
 
   static Home _singleton;
@@ -60,7 +60,6 @@ class _NavigationState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold();
   }
 }
