@@ -19,7 +19,6 @@ class _MineState extends State<Mine> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold();
   }
 }

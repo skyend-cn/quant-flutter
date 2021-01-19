@@ -9,7 +9,7 @@ class ReqStock {
 
   /// 量化指标
   Future<Response> quant({@required String label}) {
-    return _dio.post('/quant/{$label}');
+    return _dio.post('/quant/$label');
   }
 
   ///k线历史
