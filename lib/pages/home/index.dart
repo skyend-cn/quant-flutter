@@ -55,9 +55,12 @@ class Home extends StatefulWidget {
 class _NavigationState extends State<Home> {
   static int currentIndex = 0;
 
+  PageController _pageController;
+
   @override
   void initState() {
     super.initState();
+    _pageController = new PageController();
 
     Future.delayed(Duration.zero, () {
       String routeName = ModalRoute.of(context).settings.name;
@@ -69,10 +72,15 @@ class _NavigationState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    Map page = widget.pages[currentIndex];
     return Scaffold(
-        appBar: page['appbar'],
-        body: Container(color: Colors.white, child: page['widget']),
+        body: PageView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          itemCount: widget.pages.length,
+          itemBuilder: (BuildContext context, int index) {
+            return widget.pages[index]['widget'];
+          },
+        ),
         bottomNavigationBar: Theme(
             data: ThemeData(
                 highlightColor: Colors.transparent,
@@ -104,6 +112,8 @@ class _NavigationState extends State<Home> {
                 setState(() {
                   currentIndex = index;
                 });
+                _pageController.animateToPage(index,
+                    duration: Duration(microseconds: 1), curve: Curves.ease);
               },
             )));
   }

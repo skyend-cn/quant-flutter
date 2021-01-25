@@ -17,7 +17,7 @@ class Market extends StatefulWidget {
   _MarketState createState() => _MarketState();
 }
 
-class _MarketState extends State<Market> with SingleTickerProviderStateMixin {
+class _MarketState extends State<Market> with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin {
   TabController _tabController;
 
   static List<Label> _labels = Label.values.sublist(0,5);
@@ -29,6 +29,9 @@ class _MarketState extends State<Market> with SingleTickerProviderStateMixin {
     Tab(text: _labels[3].title),
     Tab(text: _labels[4].title),
   ];
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -48,6 +51,7 @@ class _MarketState extends State<Market> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

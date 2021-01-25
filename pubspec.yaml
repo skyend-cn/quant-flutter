@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: 0.5.3+5
   flutter_getuuid: ^0.0.1
   crypto: ^2.0.6
+  share: ^0.6.1+1
 
 dev_dependencies:
   flutter_test:

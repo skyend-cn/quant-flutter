@@ -18,7 +18,7 @@ class Discover extends StatefulWidget {
 }
 
 class _DiscoverState extends State<Discover>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin {
   TabController _tabController;
 
   static List<Label> _labels = Label.values.sublist(5, 9);
@@ -29,6 +29,9 @@ class _DiscoverState extends State<Discover>
     Tab(text: _labels[2].title),
     Tab(text: _labels[3].title),
   ];
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -48,6 +51,7 @@ class _DiscoverState extends State<Discover>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

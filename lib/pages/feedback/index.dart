@@ -19,7 +19,6 @@ class _FeedbackState extends State<Feedback> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold();
   }
 }

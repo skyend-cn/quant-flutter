@@ -4,6 +4,7 @@ import 'package:quant/jsonserialize/stock/data.dart';
 import 'package:quant/utils/constant.dart';
 import 'package:quant/utils/global.dart';
 import 'package:quant/utils/logger.dart';
+import 'package:quant/values/string.dart' as res;
 
 class StockListView extends StatefulWidget {
   final String _label;
@@ -14,7 +15,8 @@ class StockListView extends StatefulWidget {
   State<StatefulWidget> createState() => _StockListViewState(_label);
 }
 
-class _StockListViewState extends State<StockListView> {
+class _StockListViewState extends State<StockListView>
+    with AutomaticKeepAliveClientMixin {
   final String _label;
 
   List<StockData> _stocks = [];
@@ -25,9 +27,11 @@ class _StockListViewState extends State<StockListView> {
       RefreshController(initialRefresh: false);
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
     super.initState();
-
     _onRefresh();
   }
 
@@ -48,6 +52,7 @@ class _StockListViewState extends State<StockListView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: _bodyBuilder(),
@@ -67,22 +72,20 @@ class _StockListViewState extends State<StockListView> {
         header: G.pullToRefreshStyle.header(),
         controller: _refreshController,
         onRefresh: _onRefresh,
-        child: ListView.builder(
-          itemBuilder: (context, index) => _itemBuilder(context, index),
-          itemCount: (_stocks.length + 1) * 2,
-        ),
+        child: ListView.separated(
+            itemBuilder: (context, index) => _itemBuilder(context, index),
+            itemCount: _stocks.length + 1,
+            separatorBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return Container();
+              }
+              return Divider(height: 1.0);
+            }),
       );
     }
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
-    if (index == 1) {
-      return Container();
-    }
-    if (index.isOdd) {
-      return Divider();
-    }
-    index = index ~/ 2;
     if (index == 0) {
       return _itemTitleBuilder();
     } else {
@@ -91,14 +94,17 @@ class _StockListViewState extends State<StockListView> {
   }
 
   Widget _itemTitleBuilder() {
-    String title = "名称";
+    String title = res.Strings.stock_list_name;
     String label;
-    String chg = "涨跌幅";
+    String chg = res.Strings.stock_list_chg;
 
     Label l = Label.fromString(_label);
     label = l.title;
 
-    if (_label == Label.INC.label || _label == Label.DEC.label) {
+    if (_label == Label.INC.label ||
+        _label == Label.DEC.label ||
+        _label == Label.QC.label ||
+        _label == Label.QF.label) {
       label = "";
     }
 
@@ -106,16 +112,16 @@ class _StockListViewState extends State<StockListView> {
       children: [
         Container(
           alignment: Alignment.centerLeft,
-          margin: EdgeInsets.only(left: 15, bottom: 8),
+          margin: EdgeInsets.only(left: 15, bottom: 2),
           child: Text(title),
         ),
         Container(
             alignment: Alignment.centerRight,
-            margin: EdgeInsets.only(right: 15, bottom: 8),
+            margin: EdgeInsets.only(right: 15, bottom: 2),
             child: Text(chg)),
         Container(
           alignment: Alignment.centerRight,
-          margin: EdgeInsets.only(right: 120, bottom: 8),
+          margin: EdgeInsets.only(right: 120, bottom: 2),
           child: Text(label),
         ),
       ],
@@ -141,64 +147,69 @@ class _StockListViewState extends State<StockListView> {
     } else if (_label == Label.DEC.label) {
       label = "";
     } else if (_label == Label.QC.label) {
-      label = index.toString();
+      label = "";
     } else if (_label == Label.QF.label) {
-      label = index.toString();
+      label = "";
     } else if (_label == Label.HOLDERS.label) {
       label = stock.getHolderChanged().toStringAsFixed(2);
     } else if (_label == Label.INSIDE.label) {
       label = stock.lastTenDaysInsideChangeFund.toStringAsFixed(2);
     }
 
-    return Stack(
-      children: [
-        Container(
-          height: 34,
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                constraints: BoxConstraints(
-                  maxWidth: 150,
+    return InkWell(
+      onTap: () {
+        Logger.v("tap: " + stock.toString());
+      },
+      child: Stack(
+        children: [
+          Container(
+            height: 48,
+            alignment: Alignment.centerLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: 150,
+                  ),
+                  margin: EdgeInsets.only(left: 15),
+                  child: Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
-                margin: EdgeInsets.only(left: 15),
-                child: Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints(
-                  maxWidth: 150,
-                ),
-                margin: EdgeInsets.only(left: 15, top: 2),
-                child: Text(
-                  symbol,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 12),
-                ),
-              )
-            ],
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: 150,
+                  ),
+                  margin: EdgeInsets.only(left: 15, top: 2),
+                  child: Text(
+                    symbol,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 12),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-        Container(
-          height: 34,
-          alignment: Alignment.centerRight,
-          margin: EdgeInsets.only(right: 15),
-          child: Text(chg),
-        ),
-        Container(
-          height: 34,
-          alignment: Alignment.centerRight,
-          margin: EdgeInsets.only(right: 120),
-          child: Text(label),
-        ),
-      ],
+          Container(
+            height: 48,
+            alignment: Alignment.centerRight,
+            margin: EdgeInsets.only(right: 15),
+            child: Text(chg),
+          ),
+          Container(
+            height: 48,
+            alignment: Alignment.centerRight,
+            margin: EdgeInsets.only(right: 120),
+            child: Text(label),
+          ),
+        ],
+      ),
     );
   }
 }
