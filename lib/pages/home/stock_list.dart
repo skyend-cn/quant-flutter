@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:quant/jsonserialize/stock/data.dart';
 import 'package:quant/utils/constant.dart';
 import 'package:quant/utils/global.dart';
@@ -17,68 +16,63 @@ class StockListView extends StatefulWidget {
 
 class _StockListViewState extends State<StockListView> {
   final String _label;
-  Future _queryStockFuture;
 
   List<StockData> _stocks = [];
 
   _StockListViewState(this._label);
 
-  Future _queryStock() async {
-    var res = G.req.stock.quant(label: _label);
-    return res;
-  }
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   void initState() {
     super.initState();
-    _queryStockFuture = _queryStock();
+
+    _onRefresh();
+  }
+
+  void _onRefresh() async {
+    Logger.v("_onRefresh");
+
+    var res = await G.req.stock.quant(label: _label);
+    _stocks.clear();
+    for (var o in res.data['data']) {
+      StockData stock = StockData.fromJson(o);
+      _stocks.add(stock);
+    }
+    setState(() {
+      _stocks = _stocks;
+    });
+    _refreshController.refreshCompleted();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: _queryStock,
-          child: FutureBuilder(
-            builder: _buildFuture,
-            future: _queryStockFuture,
-          ),
-        ),
+        child: _bodyBuilder(),
       ),
     );
   }
 
-  Widget _buildFuture(BuildContext context, AsyncSnapshot snapshot) {
-    switch (snapshot.connectionState) {
-      case ConnectionState.none:
-        return Text('还没有开始网络请求');
-      case ConnectionState.active:
-        return Text('ConnectionState.active');
-      case ConnectionState.waiting:
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      case ConnectionState.done:
-        if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        }
-        return _createListView(context, snapshot);
-      default:
-        return Text('还没有开始网络请求');
+  Widget _bodyBuilder() {
+    if (_stocks.isEmpty) {
+      return Container(
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
+      );
+    } else {
+      return SmartRefresher(
+        enablePullDown: true,
+        header: G.pullToRefreshStyle.header(),
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        child: ListView.builder(
+          itemBuilder: (context, index) => _itemBuilder(context, index),
+          itemCount: (_stocks.length + 1) * 2,
+        ),
+      );
     }
-  }
-
-  Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
-    for (var o in json.decode(snapshot.data.toString())['data']) {
-      StockData stock = StockData.fromJson(o);
-      _stocks.add(stock);
-    }
-
-    return ListView.builder(
-      itemBuilder: (context, index) => _itemBuilder(context, index),
-      itemCount: (_stocks.length + 1) * 2,
-    );
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
