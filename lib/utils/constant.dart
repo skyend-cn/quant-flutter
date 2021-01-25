@@ -15,8 +15,12 @@ class Label {
   static Label RISK = Label(title: "风险", label: "risk");
   static Label INC = Label(title: "涨幅", label: "inc");
   static Label DEC = Label(title: "跌幅", label: "dec");
+  static Label QC = Label(title: "QC指数", label: "qc");
+  static Label QF = Label(title: "QF指数", label: "qf");
+  static Label HOLDERS = Label(title: "机构变动", label: "holders");
+  static Label INSIDE = Label(title: "内部持股变动", label: "inside");
 
-  static List<Label> values = [PE, PB, RISK, INC, DEC];
+  static List<Label> values = [PE, PB, RISK, INC, DEC, QC, QF, HOLDERS, INSIDE];
 
   static Label fromString(String label) {
     for (Label o in values) {

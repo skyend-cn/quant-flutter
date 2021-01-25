@@ -76,12 +76,12 @@ class _StockListViewState extends State<StockListView> {
     }
 
     return ListView.builder(
-      itemBuilder: (context, index) => _itemBuilder(context, index, _stocks),
+      itemBuilder: (context, index) => _itemBuilder(context, index),
       itemCount: (_stocks.length + 1) * 2,
     );
   }
 
-  Widget _itemBuilder(BuildContext context, int index, stocks) {
+  Widget _itemBuilder(BuildContext context, int index) {
     if (index == 1) {
       return Container();
     }
@@ -92,7 +92,7 @@ class _StockListViewState extends State<StockListView> {
     if (index == 0) {
       return _itemTitleBuilder();
     } else {
-      return _itemContentBuilder(stocks[index - 1]);
+      return _itemContentBuilder(index - 1);
     }
   }
 
@@ -103,12 +103,8 @@ class _StockListViewState extends State<StockListView> {
 
     Label l = Label.fromString(_label);
     label = l.title;
-    if (_label == Label.PE.label) {
-    } else if (_label == Label.PB.label) {
-    } else if (_label == Label.RISK.label) {
-    } else if (_label == Label.INC.label) {
-      label = "";
-    } else if (_label == Label.DEC.label) {
+
+    if (_label == Label.INC.label || _label == Label.DEC.label) {
       label = "";
     }
 
@@ -132,7 +128,9 @@ class _StockListViewState extends State<StockListView> {
     );
   }
 
-  Widget _itemContentBuilder(StockData stock) {
+  Widget _itemContentBuilder(int index) {
+    StockData stock = _stocks[index];
+
     String title = stock.cnName;
     String symbol = stock.symbol;
     String label = "";
@@ -141,16 +139,21 @@ class _StockListViewState extends State<StockListView> {
     if (_label == Label.PE.label) {
       label = stock.pe.toStringAsFixed(2);
     } else if (_label == Label.PB.label) {
-      double pb = stock.bookValue == 0 ? 0 : stock.price / stock.bookValue;
-      label = pb.toStringAsFixed(2);
+      label = stock.getPb().toStringAsFixed(2);
     } else if (_label == Label.RISK.label) {
-      double pb = stock.bookValue == 0 ? 0 : stock.price / stock.bookValue;
-      double risk = stock.pe * pb * stock.beta * 100;
-      label = risk.toStringAsFixed(2);
+      label = stock.getRisk().toStringAsFixed(2);
     } else if (_label == Label.INC.label) {
       label = "";
     } else if (_label == Label.DEC.label) {
       label = "";
+    } else if (_label == Label.QC.label) {
+      label = index.toString();
+    } else if (_label == Label.QF.label) {
+      label = index.toString();
+    } else if (_label == Label.HOLDERS.label) {
+      label = stock.getHolderChanged().toStringAsFixed(2);
+    } else if (_label == Label.INSIDE.label) {
+      label = stock.lastTenDaysInsideChangeFund.toStringAsFixed(2);
     }
 
     return Stack(

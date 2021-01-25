@@ -117,6 +117,18 @@ class StockData {
       this.beta,
       this.peg});
 
+  double getPb() {
+    return bookValue == 0 ? 0 : price / bookValue;
+  }
+
+  double getRisk() {
+    return pe * getPb() * beta * 100;
+  }
+
+  double getHolderChanged() {
+    return marketCapitalization == 0 ? 0 : holdersChangedFund / marketCapitalization;
+  }
+
   //反序列化
   factory StockData.fromJson(Map<String, dynamic> json) =>
       _$StockDataFromJson(json);
