@@ -47,7 +47,7 @@ class _SplashState extends State<Splash> {
       var data = value.data['data'];
       Logger.v("login response: " + data);
 
-      UserData userData = new UserData(token: data);
+      UserData userData = new UserData(token: data, uuid: uuid);
       G.user.init(userData.toJson());
     }).whenComplete(() {
       int endTime = DateTime.now().millisecondsSinceEpoch;

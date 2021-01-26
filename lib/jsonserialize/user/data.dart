@@ -5,9 +5,11 @@ part 'data.g.dart';
 @JsonSerializable()
 class UserData {
   String token;
+  String uuid;
 
   UserData({
     this.token,
+    this.uuid,
   });
 
   //反序列化

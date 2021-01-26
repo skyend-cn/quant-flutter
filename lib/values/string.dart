@@ -9,7 +9,7 @@ class Strings {
 
   static final String common_mine = "我的";
 
-  static final String mine_feedback = "用户反馈";
+  static final String mine_feedback = "意见反馈";
 
   static final String mine_share = "分享APP";
 
@@ -19,4 +19,17 @@ class Strings {
   static final String stock_list_name = "名称";
 
   static final String stock_list_chg = "涨跌幅";
+
+  static final String feedback = "意见反馈";
+
+  static final String feedback_content_title = "问题和意见";
+
+  static final String feedback_content_hint = "请输入你的问题和意见，以便我们提供更好的服务";
+
+  static final String feedback_contact_title = "联系方式";
+
+  static final String feedback_contact_hint = "选填，便于我们与你联系";
+
+  static final String feedback_submmit = "提交";
+
 }
