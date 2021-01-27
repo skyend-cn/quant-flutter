@@ -2,7 +2,7 @@ mixin VolumeEntity {
 
   double open;
   double close;
-  double vol;
+  double volume;
   double MA5Volume;
   double MA10Volume;
 }

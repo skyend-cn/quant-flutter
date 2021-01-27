@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quant/pages/detail/index.dart';
 import 'package:quant/pages/feedback/index.dart' as fb;
 import 'package:quant/pages/home/index.dart';
 import 'package:quant/pages/splash/index.dart';
@@ -6,13 +7,11 @@ import 'package:quant/pages/splash/index.dart';
 class Router {
   static final _routes = {
     '/splash': (BuildContext context, {Object args}) => Splash(),
-
     '/market': (BuildContext context, {Object args}) => Home(),
     '/discover': (BuildContext context, {Object args}) => Home(),
     '/mine': (BuildContext context, {Object args}) => Home(),
-
     '/feedback': (BuildContext context, {Object args}) => fb.Feedback(),
-
+    '/detail': (BuildContext context, {Object args}) => Detail(),
   };
 
   static Router _singleton;

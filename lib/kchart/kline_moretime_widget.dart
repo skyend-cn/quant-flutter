@@ -14,8 +14,6 @@ class KlineMoreTimeWidght extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-//    LinearGradient linerGradient =
     return Container(
       margin: EdgeInsets.only(left: 5,right: 5),
       decoration: BoxDecoration(

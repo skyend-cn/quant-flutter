@@ -156,14 +156,14 @@ class _KChartWidgetState extends State<KChartWidget>  with SingleTickerProviderS
           double upDown = entity.close - entity.open;
           double upDownPercent = upDown / entity.open * 100;
           infos = [
-            getDate(entity.id),
+            entity.date,
             NumberUtil.format(entity.open),
             NumberUtil.format(entity.high),
             NumberUtil.format(entity.low),
             NumberUtil.format(entity.close),
             "${upDown > 0 ? "+" : ""}${NumberUtil.format(upDown)}",
             "${upDownPercent > 0 ? "+" : ''}${upDownPercent.toStringAsFixed(2)}%",
-            NumberUtil.volFormat(entity.vol)
+            NumberUtil.volFormat(entity.volume)
           ];
           return Align(
             alignment: snapshot.data.isLeft ? Alignment.topLeft : Alignment.topRight,

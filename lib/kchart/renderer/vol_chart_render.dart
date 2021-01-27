@@ -47,7 +47,7 @@ class VolChartRenderer extends BaseChartRenderer<VolumeEntity> {
   void drawTopText(Canvas canvas, VolumeEntity data) {
     TextSpan span = TextSpan(
       children: [
-        TextSpan(text: "VOL:${NumberUtil.volFormat(data.vol)}    ", style: TextStyle(color: ChartColors.volColor,fontSize: 10)),
+        TextSpan(text: "VOL:${NumberUtil.volFormat(data.volume)}    ", style: TextStyle(color: ChartColors.volColor,fontSize: 10)),
         TextSpan(text: "MA5:${NumberUtil.volFormat(data.MA5Volume)}    ", style:TextStyle(color: ChartColors.ma5Color,fontSize: 10)),
         TextSpan(text: "MA10:${NumberUtil.volFormat(data.MA10Volume)}    ", style: TextStyle(color: ChartColors.ma10Color,fontSize: 10)),
       ],
@@ -62,7 +62,7 @@ class VolChartRenderer extends BaseChartRenderer<VolumeEntity> {
     var right =  chartRect.width - curX;
     var left = right - candleWidth;
     var bottom = chartRect.bottom;
-    var top = getY(curpoint.vol);
+    var top = getY(curpoint.volume);
     var rect = Rect.fromLTRB(left, top, right, bottom);
     if(curpoint.close > curpoint.open) chartPaint.color = ChartColors.upColor;
     else chartPaint.color = ChartColors.dnColor;

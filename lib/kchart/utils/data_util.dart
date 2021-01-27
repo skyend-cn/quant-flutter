@@ -171,13 +171,13 @@ class DataUtil {
     for (; i < dataList.length; i++) {
       KLineEntity entry = dataList[i];
 
-      volumeMa5 += entry.vol;
-      volumeMa10 += entry.vol;
+      volumeMa5 += entry.volume;
+      volumeMa10 += entry.volume;
 
       if (i == 4) {
         entry.MA5Volume = (volumeMa5 / 5);
       } else if (i > 4) {
-        volumeMa5 -= dataList[i - 5].vol;
+        volumeMa5 -= dataList[i - 5].volume;
         entry.MA5Volume = volumeMa5 / 5;
       } else {
         entry.MA5Volume = 0;
@@ -186,7 +186,7 @@ class DataUtil {
       if (i == 9) {
         entry.MA10Volume = volumeMa10 / 10;
       } else if (i > 9) {
-        volumeMa10 -= dataList[i - 10].vol;
+        volumeMa10 -= dataList[i - 10].volume;
         entry.MA10Volume = volumeMa10 / 10;
       } else {
         entry.MA10Volume = 0;

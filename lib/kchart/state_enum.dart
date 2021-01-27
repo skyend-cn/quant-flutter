@@ -35,28 +35,14 @@ class KLinePeriodModel {
   KLinePeriodModel({this.name,this.period});
 
   static List<KLinePeriodModel> topModels() {
-    var model1 = KLinePeriodModel(name: "分时",period: "1min");
-    var model2 = KLinePeriodModel(name: "15分",period: "15min");
-    var model3 = KLinePeriodModel(name: "1小时",period: "60min");
-    var model4 = KLinePeriodModel(name: "4小时",period: "4hour");
     var model5 = KLinePeriodModel(name: "日线",period: "1day");
-    var model6 = KLinePeriodModel(name: "更多",period: "-1");
-    return [model1,model2,model3,model4,model5,model6];
+    return [model5];
   }
 
-
-  static List<KLinePeriodModel> foldModels() {
-    var model1 = KLinePeriodModel(name: "1分",period: "1min");
-    var model2 = KLinePeriodModel(name: "5分",period: "5min");
-    var model3 = KLinePeriodModel(name: "30分",period: "30min");
-    var model4 = KLinePeriodModel(name: "周线",period: "1week");
-    var model5 = KLinePeriodModel(name: "一月",period: "1mon");
-    return [model1,model2,model3,model4,model5];
-  }
 
   static KLinePeriodModel defaultModel() {
-    var model3 = KLinePeriodModel(name: "分时",period: "1min");
-    return model3;
+    var model5 = KLinePeriodModel(name: "日线",period: "1day");
+    return model5;
   }
 
 }

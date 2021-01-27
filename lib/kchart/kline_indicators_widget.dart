@@ -12,12 +12,9 @@ class KlineIndicatorsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
-      height: 100,
-      margin: EdgeInsets.only(left: 5, right: 5),
       decoration: BoxDecoration(
-        color: ChartColors.bgColor,
+        color: Color(0xFF0E1925),
           border: Border.all(color: ChartColors.gridColor, width: 0.5)),
       child: Column(
         children: <Widget>[

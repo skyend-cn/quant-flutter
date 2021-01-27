@@ -10,9 +10,6 @@ class KLineDataController extends ChangeNotifier {
   //默认显示的几个时间k线
   List<KLinePeriodModel> topPeriodItems;
 
-  //点击更多展开时候的数据
-  List<KLinePeriodModel> flodPeriodItems;
-
   MainState mainState;
 
   SecondaryState  secondaryState;
@@ -27,10 +24,9 @@ class KLineDataController extends ChangeNotifier {
     mainStates = KLineMainStateModel.defaultModels();
     secondaryStates = KLineSecondaryStateModel.defaultModels();
     topPeriodItems = KLinePeriodModel.topModels();
-    flodPeriodItems = KLinePeriodModel.foldModels();
-    mainState = MainState.NONE;
+    mainState = MainState.MA;
     secondaryState = SecondaryState.NONE;
-    isLine = true;
+    isLine = false;
     periodModel = KLinePeriodModel.defaultModel();
   }
 
@@ -55,11 +51,6 @@ class KLineDataController extends ChangeNotifier {
       isLine = true;
     } else {
       isLine = false;
-    }
-    if(this.flodPeriodItems.map((e) => e.name).toList().contains(periodModel.name)) {
-      this.topPeriodItems.last.name = periodModel.name;
-    } else {
-      this.topPeriodItems.last.name = "更多";
     }
     changePeriodClick(periodModel);
     notifyListeners();
