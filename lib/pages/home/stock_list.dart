@@ -159,7 +159,7 @@ class _StockListViewState extends State<StockListView>
     return InkWell(
       onTap: () {
         Logger.v("tap: " + stock.toString());
-        G.pushNamed('/detail');
+        G.pushNamed('/detail',arguments: stock);
       },
       child: Stack(
         children: [

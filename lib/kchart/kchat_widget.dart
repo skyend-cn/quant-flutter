@@ -47,7 +47,7 @@ class _KChartWidgetState extends State<KChartWidget>  with SingleTickerProviderS
     // TODO: implement initState
     super.initState();
     mInfoWindowStream = StreamController<InfoWindowEntity>();
-    scrollX = -(widget.width / 5) + ChartStyle.candleWidth / 2 ;
+    scrollX = -(widget.width / 25) + ChartStyle.candleWidth / 2 ;
   }
 
   @override
@@ -67,7 +67,7 @@ class _KChartWidgetState extends State<KChartWidget>  with SingleTickerProviderS
       maxScroll = -(widget.width - dataLength);
     }
     var datsScroll =  widget.width - dataLength;
-    var normalminScroll =  -(widget.width / 5) + ChartStyle.candleWidth / 2;
+    var normalminScroll =  -(widget.width / 25) + ChartStyle.candleWidth / 2;
     minScroll = min(normalminScroll, -datsScroll);
 
 

@@ -1,6 +1,7 @@
 import 'package:color_dart/color_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:quant/utils/global.dart';
+import 'package:quant/utils/logger.dart';
 import 'package:quant/values/string.dart' as res;
 import 'package:quant/values/color.dart' as res;
 
@@ -26,12 +27,10 @@ class _FeedbackState extends State<Feedback> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        brightness: Brightness.light,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_outlined, color: rgba(50, 50, 50, 1)),
-          onPressed: () {
-            G.pop();
-          },
+        iconTheme: IconThemeData(
+          color: rgba(50, 50, 50, 1),
         ),
         title: Text(
           res.Strings.feedback,
@@ -136,6 +135,15 @@ class _FeedbackState extends State<Feedback> {
 
     var response = G.req.user.feedback(phone: uuid, content: content);
 
-    response.whenComplete(() => G.loading.hide(context));
+    response.then((value) {
+      if (value.data['code'] == 200) {
+        G.toast("反馈成功");
+      } else {
+        G.toast("反馈失败");
+      }
+    }).whenComplete(() {
+      G.loading.hide(context);
+      G.pop();
+    });
   }
 }

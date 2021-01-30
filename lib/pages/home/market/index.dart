@@ -54,6 +54,7 @@ class _MarketState extends State<Market> with SingleTickerProviderStateMixin,Aut
     super.build(context);
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         flexibleSpace: SafeArea(
           child: TabBar(

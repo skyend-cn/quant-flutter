@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:color_dart/rgba_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quant/routes/router.dart' as AppRouter;
 import 'package:quant/utils/constant.dart';
 import 'package:quant/utils/global.dart';
@@ -19,6 +20,7 @@ void main() async {
   }
 
   runApp(QuantApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
 }
 
 class QuantApp extends StatefulWidget {

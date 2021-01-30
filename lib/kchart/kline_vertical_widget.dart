@@ -40,16 +40,16 @@ class _KLineVerticalWidgetState extends State<KLineVerticalWidget>
 
               }),
           Builder(builder: (BuildContext context) {
-            return Expanded(
-                child: Stack(
+            return Expanded(child:
+            Stack(
               children: <Widget>[
                 Container(
-                  height: 450,
+                  height: MediaQuery.of(context).orientation == Orientation.landscape ? MediaQuery.of(context).size.height : MediaQuery.of(context).size.height / 2,
                   width: MediaQuery.of(context).size.width,
                   child: KChartWidget(
                     widget.datas,
                     width: MediaQuery.of(context).size.width,
-                    height: 450,
+                    height: MediaQuery.of(context).orientation == Orientation.landscape ? MediaQuery.of(context).size.height : MediaQuery.of(context).size.height / 2,
                     isLine: KLineDataWidgetController.of(context).isLine,
                     mainState: dataController.mainState,
                     secondaryState: dataController.secondaryState,
@@ -65,3 +65,4 @@ class _KLineVerticalWidgetState extends State<KLineVerticalWidget>
     );
   }
 }
+

@@ -11,7 +11,7 @@ class Router {
     '/discover': (BuildContext context, {Object args}) => Home(),
     '/mine': (BuildContext context, {Object args}) => Home(),
     '/feedback': (BuildContext context, {Object args}) => fb.Feedback(),
-    '/detail': (BuildContext context, {Object args}) => Detail(),
+    '/detail': (BuildContext context, {Object args}) => Detail(stock: args),
   };
 
   static Router _singleton;

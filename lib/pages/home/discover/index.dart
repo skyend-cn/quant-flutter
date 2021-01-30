@@ -54,6 +54,7 @@ class _DiscoverState extends State<Discover>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         backgroundColor: Colors.transparent,
         flexibleSpace: SafeArea(
           child: TabBar(
