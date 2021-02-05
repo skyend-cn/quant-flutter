@@ -7,6 +7,7 @@ import 'package:quant/kchart/state_enum.dart';
 import 'package:quant/kchart/utils/data_util.dart';
 import 'package:quant/utils/global.dart';
 import 'package:quant/utils/logger.dart';
+import 'package:quant/values/string.dart' as res;
 
 class Detail extends StatefulWidget {
   final StockData stock;
@@ -62,7 +63,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "市盈率",
+                                      res.Strings.pe,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -87,7 +88,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      "市净率",
+                                      res.Strings.pb,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -112,7 +113,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      "Beta",
+                                      res.Strings.beta,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -143,7 +144,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "每股收益",
+                                      res.Strings.eps,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -163,7 +164,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      "每股净资产",
+                                      res.Strings.book_value,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -189,7 +190,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Peg",
+                                      res.Strings.peg,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -209,7 +210,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      "机构变动(%)",
+                                      res.Strings.holder_change + "(%)",
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),

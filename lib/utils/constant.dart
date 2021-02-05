@@ -1,3 +1,5 @@
+import 'package:quant/values/string.dart' as res;
+
 class Constant {
   static final String KEY_USER = "user";
 
@@ -10,15 +12,15 @@ class Label {
 
   Label({this.title, this.label});
 
-  static Label PE = Label(title: "市盈率", label: "pe");
-  static Label PB = Label(title: "市净率", label: "pb");
-  static Label RISK = Label(title: "风险", label: "risk");
-  static Label INC = Label(title: "涨幅", label: "inc");
-  static Label DEC = Label(title: "跌幅", label: "dec");
-  static Label QC = Label(title: "QC指数", label: "qc");
-  static Label QF = Label(title: "QF指数", label: "qf");
-  static Label HOLDERS = Label(title: "机构变动", label: "holders");
-  static Label INSIDE = Label(title: "内部持股变动", label: "inside");
+  static Label PE = Label(title: res.Strings.pe, label: "pe");
+  static Label PB = Label(title: res.Strings.pb, label: "pb");
+  static Label RISK = Label(title: res.Strings.risk, label: "risk");
+  static Label INC = Label(title: res.Strings.inc, label: "inc");
+  static Label DEC = Label(title: res.Strings.dec, label: "dec");
+  static Label QC = Label(title: res.Strings.qc, label: "qc");
+  static Label QF = Label(title: res.Strings.qf, label: "qf");
+  static Label HOLDERS = Label(title: res.Strings.holder_change, label: "holders");
+  static Label INSIDE = Label(title: res.Strings.inside_change, label: "inside");
 
   static List<Label> values = [PE, PB, RISK, INC, DEC, QC, QF, HOLDERS, INSIDE];
 

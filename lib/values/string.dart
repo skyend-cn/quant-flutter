@@ -32,4 +32,34 @@ class Strings {
 
   static final String feedback_submmit = "提交";
 
+  static final String feedback_success = "反馈成功";
+
+  static final String feedback_fail = "反馈失败";
+
+  static final String pe = "市盈率";
+
+  static final String pb = "市净率";
+
+  static final String risk = "风险";
+
+  static final String inc = "涨幅";
+
+  static final String dec = "跌幅";
+
+  static final String qc = "QC指数";
+
+  static final String qf = "QF指数";
+
+  static final String beta = "Beta";
+
+  static final String eps = "每股收益";
+
+  static final String book_value = "每股收益";
+
+  static final String peg = "Peg";
+
+  static final String holder_change = "机构变动";
+
+  static final String inside_change = "内部持股变动";
+
 }

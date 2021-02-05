@@ -137,9 +137,9 @@ class _FeedbackState extends State<Feedback> {
 
     response.then((value) {
       if (value.data['code'] == 200) {
-        G.toast("反馈成功");
+        G.toast(res.Strings.feedback_success);
       } else {
-        G.toast("反馈失败");
+        G.toast(res.Strings.feedback_fail);
       }
     }).whenComplete(() {
       G.loading.hide(context);
