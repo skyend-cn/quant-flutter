@@ -108,4 +108,13 @@ class G {
 
   /// user信息
   static final User user = User();
+
+  static Locale _currentLocale;
+
+  static Locale getCurrentLocale() => _currentLocale;
+
+  static setCurrentLocale(Locale locale) {
+    _currentLocale = locale;
+  }
+
 }

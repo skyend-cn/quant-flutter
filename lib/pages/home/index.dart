@@ -1,10 +1,10 @@
 import 'package:color_dart/hex_color.dart';
 import 'package:flutter/material.dart';
+import 'package:quant/generated/l10n.dart';
 import 'package:quant/pages/home/discover/index.dart';
 import 'package:quant/pages/home/market/index.dart';
 import 'package:quant/pages/home/mine/index.dart';
 import 'package:quant/values/color.dart' as res;
-import 'package:quant/values/string.dart' as res;
 
 class Home extends StatefulWidget {
   final String routeName;
@@ -90,15 +90,15 @@ class _NavigationState extends State<Home> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.trending_up),
-                  label: res.Strings.common_market,
+                  label: S.of(context).common_market,
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.explore),
-                  label: res.Strings.common_discover,
+                  label: S.of(context).common_discover,
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.perm_identity),
-                  label: res.Strings.common_mine,
+                  label: S.of(context).common_mine,
                 ),
               ],
               // 未选中字体大小

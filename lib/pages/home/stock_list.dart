@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:quant/generated/l10n.dart';
 import 'package:quant/jsonserialize/stock/data.dart';
 import 'package:quant/utils/constant.dart';
 import 'package:quant/utils/global.dart';
 import 'package:quant/utils/logger.dart';
-import 'package:quant/values/string.dart' as res;
 
 class StockListView extends StatefulWidget {
   final String _label;
@@ -23,6 +23,8 @@ class _StockListViewState extends State<StockListView>
 
   _StockListViewState(this._label);
 
+  bool _isZh = false;
+
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -32,6 +34,7 @@ class _StockListViewState extends State<StockListView>
   @override
   void initState() {
     super.initState();
+    _isZh = G.getCurrentLocale().languageCode == "zh";
     _onRefresh();
   }
 
@@ -94,9 +97,9 @@ class _StockListViewState extends State<StockListView>
   }
 
   Widget _itemTitleBuilder() {
-    String title = res.Strings.stock_list_name;
+    String title = S.of(context).stock_list_name;
     String label;
-    String chg = res.Strings.stock_list_chg;
+    String chg = S.of(context).stock_list_chg;
 
     Label l = Label.fromString(_label);
     label = l.title;
@@ -131,7 +134,7 @@ class _StockListViewState extends State<StockListView>
   Widget _itemContentBuilder(int index) {
     StockData stock = _stocks[index];
 
-    String title = stock.cnName;
+    String title = _isZh ? stock.cnName : stock.name;
     String symbol = stock.symbol;
     String label = "";
     String chg = stock.chg.toString() + '%';
@@ -159,7 +162,7 @@ class _StockListViewState extends State<StockListView>
     return InkWell(
       onTap: () {
         Logger.v("tap: " + stock.toString());
-        G.pushNamed('/detail',arguments: stock);
+        G.pushNamed('/detail', arguments: stock);
       },
       child: Stack(
         children: [

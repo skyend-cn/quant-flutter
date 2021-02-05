@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quant/generated/l10n.dart';
 import 'package:quant/jsonserialize/stock/data.dart';
 import 'package:quant/kchart/entity/k_line_entity.dart';
 import 'package:quant/kchart/kline_data_controller.dart';
@@ -7,7 +8,6 @@ import 'package:quant/kchart/state_enum.dart';
 import 'package:quant/kchart/utils/data_util.dart';
 import 'package:quant/utils/global.dart';
 import 'package:quant/utils/logger.dart';
-import 'package:quant/values/string.dart' as res;
 
 class Detail extends StatefulWidget {
   final StockData stock;
@@ -63,7 +63,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      res.Strings.pe,
+                                      S.of(context).pe,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -88,7 +88,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      res.Strings.pb,
+                                      S.of(context).pb,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -113,7 +113,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      res.Strings.beta,
+                                      S.of(context).beta,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -144,7 +144,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      res.Strings.eps,
+                                      S.of(context).eps,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -164,7 +164,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      res.Strings.book_value,
+                                      S.of(context).book_value,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -190,7 +190,7 @@ class _DetailState extends State<Detail> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      res.Strings.peg,
+                                      S.of(context).peg,
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),
@@ -210,7 +210,7 @@ class _DetailState extends State<Detail> {
                                   Container(
                                     margin: EdgeInsets.only(left: 25),
                                     child: Text(
-                                      res.Strings.holder_change + "(%)",
+                                      S.of(context).holder_change + "(%)",
                                       style: TextStyle(
                                           color: Colors.white60, fontSize: 20),
                                     ),

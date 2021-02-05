@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quant/generated/l10n.dart';
 import 'package:quant/kchart/state_enum.dart';
 import 'chart_style.dart';
 import 'kline_data_controller.dart';
@@ -22,7 +23,7 @@ class KlineIndicatorsWidget extends StatelessWidget {
             children: <Widget>[
               Padding(padding: EdgeInsets.only(left: 10)),
               Text(
-                "主图",
+                S.of(context).primary,
                 style: ChartStyle.getIndicatorTextStyle(),
               ),
               Padding(padding: EdgeInsets.only(left: 10)),
@@ -72,7 +73,7 @@ class KlineIndicatorsWidget extends StatelessWidget {
             children: <Widget>[
               Padding(padding: EdgeInsets.only(left: 10)),
               Text(
-                "副图",
+                S.of(context).secondary,
                 style: ChartStyle.getIndicatorTextStyle(),
               ),
               Padding(padding: EdgeInsets.only(left: 10)),

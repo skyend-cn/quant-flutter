@@ -1,8 +1,7 @@
 import 'package:color_dart/color_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:quant/generated/l10n.dart';
 import 'package:quant/utils/global.dart';
-import 'package:quant/utils/logger.dart';
-import 'package:quant/values/string.dart' as res;
 import 'package:quant/values/color.dart' as res;
 
 class Feedback extends StatefulWidget {
@@ -33,7 +32,7 @@ class _FeedbackState extends State<Feedback> {
           color: rgba(50, 50, 50, 1),
         ),
         title: Text(
-          res.Strings.feedback,
+          S.of(context).feedback,
           style: TextStyle(color: rgba(50, 50, 50, 1)),
         ),
       ),
@@ -45,7 +44,7 @@ class _FeedbackState extends State<Feedback> {
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 20),
               child: Text(
-                res.Strings.feedback_content_title,
+                S.of(context).feedback_content_title,
                 style: TextStyle(fontSize: 18, color: rgba(117, 117, 117, 1)),
               ),
             ),
@@ -65,13 +64,13 @@ class _FeedbackState extends State<Feedback> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: rgba(236, 236, 236, 1)),
                       ),
-                      hintText: res.Strings.feedback_content_hint)),
+                      hintText: S.of(context).feedback_content_hint)),
             ),
             Container(
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 20, top: 20),
               child: Text(
-                res.Strings.feedback_contact_title,
+                S.of(context).feedback_contact_title,
                 style: TextStyle(fontSize: 18, color: rgba(117, 117, 117, 1)),
               ),
             ),
@@ -89,7 +88,7 @@ class _FeedbackState extends State<Feedback> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: rgba(236, 236, 236, 1)),
                       ),
-                      hintText: res.Strings.feedback_contact_hint)),
+                      hintText: S.of(context).feedback_contact_hint)),
             ),
             Container(
               width: 230,
@@ -97,7 +96,7 @@ class _FeedbackState extends State<Feedback> {
               margin: EdgeInsets.only(top: 50),
               child: RaisedButton(
                 child: Text(
-                  res.Strings.feedback_submmit,
+                  S.of(context).feedback_submit,
                   style: TextStyle(fontSize: 18),
                 ),
                 onPressed: () {
@@ -124,7 +123,7 @@ class _FeedbackState extends State<Feedback> {
     if (contact.isNotEmpty) {
       content = content +
           "\n\n" +
-          res.Strings.feedback_contact_title +
+          S.of(context).feedback_contact_title +
           ": " +
           contact;
     }
@@ -137,9 +136,9 @@ class _FeedbackState extends State<Feedback> {
 
     response.then((value) {
       if (value.data['code'] == 200) {
-        G.toast(res.Strings.feedback_success);
+        G.toast(S.of(context).feedback_success);
       } else {
-        G.toast(res.Strings.feedback_fail);
+        G.toast(S.of(context).feedback_fail);
       }
     }).whenComplete(() {
       G.loading.hide(context);

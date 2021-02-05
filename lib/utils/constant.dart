@@ -1,4 +1,5 @@
-import 'package:quant/values/string.dart' as res;
+import 'package:quant/generated/l10n.dart';
+import 'package:quant/utils/global.dart';
 
 class Constant {
   static final String KEY_USER = "user";
@@ -12,15 +13,20 @@ class Label {
 
   Label({this.title, this.label});
 
-  static Label PE = Label(title: res.Strings.pe, label: "pe");
-  static Label PB = Label(title: res.Strings.pb, label: "pb");
-  static Label RISK = Label(title: res.Strings.risk, label: "risk");
-  static Label INC = Label(title: res.Strings.inc, label: "inc");
-  static Label DEC = Label(title: res.Strings.dec, label: "dec");
-  static Label QC = Label(title: res.Strings.qc, label: "qc");
-  static Label QF = Label(title: res.Strings.qf, label: "qf");
-  static Label HOLDERS = Label(title: res.Strings.holder_change, label: "holders");
-  static Label INSIDE = Label(title: res.Strings.inside_change, label: "inside");
+  static Label PE = Label(title: S.of(G.getCurrentContext()).pe, label: "pe");
+  static Label PB = Label(title: S.of(G.getCurrentContext()).pb, label: "pb");
+  static Label RISK =
+      Label(title: S.of(G.getCurrentContext()).risk, label: "risk");
+  static Label INC =
+      Label(title: S.of(G.getCurrentContext()).inc, label: "inc");
+  static Label DEC =
+      Label(title: S.of(G.getCurrentContext()).dec, label: "dec");
+  static Label QC = Label(title: S.of(G.getCurrentContext()).qc, label: "qc");
+  static Label QF = Label(title: S.of(G.getCurrentContext()).qf, label: "qf");
+  static Label HOLDERS =
+      Label(title: S.of(G.getCurrentContext()).holder_change, label: "holders");
+  static Label INSIDE =
+      Label(title: S.of(G.getCurrentContext()).inside_change, label: "inside");
 
   static List<Label> values = [PE, PB, RISK, INC, DEC, QC, QF, HOLDERS, INSIDE];
 
