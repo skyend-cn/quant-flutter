@@ -27,7 +27,7 @@
   "qf": "QF指数",
   "beta": "Beta",
   "eps": "每股收益",
-  "book_value": "每股收益",
+  "book_value": "每股净资产",
   "peg": "Peg",
   "holder_change": "机构变动",
   "inside_change": "内部持股变动",

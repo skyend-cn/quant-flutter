@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "app_name" : MessageLookupByLibrary.simpleMessage("宽客"),
     "beta" : MessageLookupByLibrary.simpleMessage("Beta"),
-    "book_value" : MessageLookupByLibrary.simpleMessage("每股收益"),
+    "book_value" : MessageLookupByLibrary.simpleMessage("每股净资产"),
     "chg" : MessageLookupByLibrary.simpleMessage("涨跌额"),
     "chg_percent" : MessageLookupByLibrary.simpleMessage("涨幅"),
     "close" : MessageLookupByLibrary.simpleMessage("收"),
