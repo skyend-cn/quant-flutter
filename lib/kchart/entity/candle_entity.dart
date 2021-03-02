@@ -1,6 +1,4 @@
-
- mixin CandleEntity{
-
+mixin CandleEntity {
   double open;
   double high;
   double low;
@@ -10,10 +8,17 @@
   double MA20Price;
   double MA30Price;
   double MA60Price;
+
 //  上轨线
   double up;
+
 //  中轨线
   double mb;
+
 //  下轨线
   double dn;
+
+  double chg;
+
+  double chg_percent;
 }

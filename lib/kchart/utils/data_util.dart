@@ -12,6 +12,28 @@ class DataUtil {
     _calcMACD(dataList);
     _calcRSI(dataList);
     _calcWR(dataList);
+    _calcChg(dataList);
+  }
+
+  static _calcChg(List<KLineEntity> dataList, [bool isLast = false]) {
+    double lastPrice = 0;
+
+    int i = 0;
+    if (isLast && dataList.length > 1) {
+      i = dataList.length - 1;
+      lastPrice = dataList[i - 1].close;
+    }
+    for (; i < dataList.length; i++) {
+      KLineEntity entity = dataList[i];
+      if (i == 0) {
+        entity.chg = entity.close - entity.open;
+        entity.chg_percent = (entity.close - entity.open) / entity.open;
+      } else {
+        entity.chg = (entity.close - lastPrice) / lastPrice;
+        entity.chg_percent = (entity.close - lastPrice) / lastPrice;
+      }
+      lastPrice = entity.close;
+    }
   }
 
   static _calcMA(List<KLineEntity> dataList, [bool isLast = false]) {
@@ -324,6 +346,7 @@ class DataUtil {
     _calcMACD(dataList, true);
     _calcRSI(dataList, true);
     _calcWR(dataList, true);
+    _calcChg(dataList, true);
   }
 
   //更新最后一条数据
@@ -336,5 +359,6 @@ class DataUtil {
     _calcMACD(dataList, true);
     _calcRSI(dataList, true);
     _calcWR(dataList, true);
+    _calcChg(dataList, true);
   }
 }

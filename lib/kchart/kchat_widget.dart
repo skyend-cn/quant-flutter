@@ -164,8 +164,8 @@ class _KChartWidgetState extends State<KChartWidget>
               !snapshot.hasData ||
               snapshot.data.kLineEntity == null) return Container();
           KLineEntity entity = snapshot.data.kLineEntity;
-          double upDown = entity.close - entity.open;
-          double upDownPercent = upDown / entity.open * 100;
+          double upDown = entity.chg;
+          double upDownPercent = entity.chg_percent * 100;
           infos = [
             entity.date,
             NumberUtil.format(entity.open),
