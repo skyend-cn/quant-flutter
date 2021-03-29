@@ -5,7 +5,7 @@ import 'package:quant/utils/logger.dart';
 /// 初始化dio
 Dio initDio() {
   BaseOptions _baseOptions = BaseOptions(
-    baseUrl: "http://47.104.212.171",
+    baseUrl: "http://quant.skyend.cn",
   );
 
   Dio dio = Dio(_baseOptions);
