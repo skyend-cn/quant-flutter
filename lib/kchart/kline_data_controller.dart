@@ -71,7 +71,7 @@ class KLineDataWidgetController extends StatefulWidget {
 
   static KLineDataController of(BuildContext context) {
     final _KLineControllerScope scope =
-    context.inheritFromWidgetOfExactType(_KLineControllerScope);
+    context.dependOnInheritedWidgetOfExactType<_KLineControllerScope>();
     return scope?.controller;
   }
 
