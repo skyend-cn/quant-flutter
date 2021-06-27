@@ -14,22 +14,23 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
+
   static S current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-      
+
       return S.current;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -118,7 +119,7 @@ class S {
   /// `Highly recommend《Quant》, very convenient and practical !\nhttps://play.google.com/store/apps/details?id=cn.skyend.quant`
   String get share_ios_app {
     return Intl.message(
-      'Highly recommend《Quant》, very convenient and practical !\nhttps://play.google.com/store/apps/details?id=cn.skyend.quant',
+      'Highly recommend《Quant》, very convenient and practical !\nhttps://itunes.apple.com/cn/app/id1562677357?mt=8',
       name: 'share_ios_app',
       desc: '',
       args: [],
