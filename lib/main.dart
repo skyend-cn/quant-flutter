@@ -55,6 +55,7 @@ class _QuantAppState extends State<QuantApp> {
         GlobalWidgetsLocalizations.delegate,
         S.delegate
       ],
+      debugShowCheckedModeBanner: false,
       supportedLocales: [Locale("en"), Locale("zh")],
     );
   }
