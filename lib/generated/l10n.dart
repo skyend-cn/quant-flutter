@@ -119,7 +119,7 @@ class S {
   /// `Highly recommend《Quant》, very convenient and practical !\nhttps://play.google.com/store/apps/details?id=cn.skyend.quant`
   String get share_ios_app {
     return Intl.message(
-      'Highly recommend《Quant》, very convenient and practical !\nhttps://itunes.apple.com/cn/app/id1562677357?mt=8',
+      'Highly recommend《Quant》, very convenient and practical !\nhttps://play.google.com/store/apps/details?id=cn.skyend.quant',
       name: 'share_ios_app',
       desc: '',
       args: [],

@@ -51,7 +51,11 @@ class _MineState extends State<Mine> with AutomaticKeepAliveClientMixin {
         ListTile(
           onTap: () {
             //todo
-            Share.share(S.of(context).share_android_app);
+            if (Theme.of(context).platform == TargetPlatform.android) {
+              Share.share(S.of(context).share_android_app);
+            } else {
+              Share.share(S.of(context).share_ios_app);
+            }
           },
           leading: Icon(Icons.share_outlined, size: 22),
           title: Container(
